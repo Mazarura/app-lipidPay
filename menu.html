@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Chats</title>
+		<style>
+			/* Defaults */
+			*{
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+			}
+			a{
+				text-decoration: none;
+				text-decoration-style: none;
+				color:#80aaff;
+			}
+			::-webkit-scrollbar{
+				display: none;
+			}
+			[rbtn]{
+				height: 35px;
+				width: 35px;
+				border-radius: 50%;
+				border-style: none;}
+			[rbtn] > svg{width: 14px;}
+				
+			[rbtn][fgc="light"]{background-color: black;}
+			[rbtn][fgc="dark"]{background-color: white;}
+			
+			[rbtn][fgc="light"] > svg{
+				fill: white;
+				stroke: white;}
+			[rbtn][fgc="dark"] > svg{
+				fill: black;
+				stroke: black;}
+			html{
+				width: 100%;
+				height: 100%;
+				font-family: verdana;}
+				body{
+
+					display: grid;
+					width: 100%;
+					max-width: 480px;
+					height: 100%;
+					border-right: 1px solid black;
+					grid-template-rows: min-content 1fr 65px;}
+					header{
+						display: grid;
+						grid-template-areas: "a b" "c c";
+						grid-template-columns: 1fr min-content;
+						grid-gap: 10px;
+						padding: 10px;
+						align-items: center;
+						box-sizing: content-box;
+						}
+						header label{
+							font-size: 24px;
+							font-weight: bold;}
+						header > svg{}
+						header > div{
+							height: 40px;
+							border-radius: 20px;
+							background-color: #eee;
+							grid-area: c;
+							display: grid;
+							grid-template-columns: min-content 1fr;
+							padding: 0px 20px;
+							align-items: center;
+							grid-gap: 8px;}
+							header > div svg{
+								fill: black;
+								width: 14px;
+							}
+							header > div input{
+								background-color: inherit;
+								outline: none;
+								border-style: none;
+								font-size: 14px;}
+					main{
+						height: 100%;
+						overflow-y: scroll;}
+						main ul{
+							border-top: 1px solid #eeeeee;
+						}
+							main li{
+								display: grid;
+								grid-template-areas: "a b c d";
+								grid-template-columns: auto auto 1fr auto;
+								grid-auto-columns: min-content;
+								grid-gap: 10px;
+								padding: 10px;
+								align-items: center;
+								border-bottom: 1px solid #eeeeee;}
+				
+								main input{
+									grid-area: a;
+									display: none;
+								}
+								main ul.selected input{
+									display: block;
+								}
+								main img{
+									width: 50px;
+									height: 50px;
+									grid-area: b;
+									border-radius: 50%;}
+								main a{
+									grid-area: c;
+									height: 100%;
+									display: grid;
+									grid-template-columns: 1fr min-content;
+									color: #5e5e5e; 
+									font-size: 12px;}
+									main li label:nth-child(1){
+										font-weight: bold;
+										color: black;
+										font-size: 16px;}
+									main li label:nth-child(2){
+										justify-self:end;}
+									main li label:nth-child(3){
+										font-style: italic;
+										}	
+									main li label:nth-child(4){
+										width: 18px;
+										height: 18px;
+										justify-self:end;
+										background-color:black;
+										color: white;
+										display: flex;
+										justify-content:center;
+										align-items: center;
+										border-radius: 50%;}
+								main button{
+									grid-area: d;
+								}	
+
+					footer{
+						display: grid;
+						grid-template-columns: repeat(4, auto);
+						
+						align-items: center;
+						background-color: black;}
+						footer a{
+							display: grid;
+							grid-gap: 5px;
+							font-size: 10px;
+							color: white;
+							justify-items: center;
+						}
+						#chats{
+							color: dodgerblue;}
+						
+							#chats svg{
+								fill: dodgerblue;
+								stroke: dodgerblue;}
+						
+							footer svg{
+								width: 24px;
+								fill: white;
+								stroke: white;	
+							}
+
+
+
+		</style>
+					
+				
+	</head>
+	<body>
+		<header>
+			<label>Chats</label>
+			<button rbtn fgc="light">
+				<svg viewBox="0 0 448 448" xmlns="http://www.w3.org/2000/svg">
+					<path d="m408 184h-136c-4.417969 0-8-3.582031-8-8v-136c0-22.089844-17.910156-40-40-40s-40 17.910156-40 40v136c0 4.417969-3.582031 8-8 8h-136c-22.089844 0-40 17.910156-40 40s17.910156 40 40 40h136c4.417969 0 8 3.582031 8 8v136c0 22.089844 17.910156 40 40 40s40-17.910156 40-40v-136c0-4.417969 3.582031-8 8-8h136c22.089844 0 40-17.910156 40-40s-17.910156-40-40-40zm0 0"/>
+				</svg>
+			</button>
+			<div>
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					viewBox="0 0 28.931 28.932" style="enable-background:new 0 0 28.931 28.932;"
+	 				xml:space="preserve">
+					<path d="M28.344,25.518l-6.114-6.115c1.486-2.067,2.303-4.537,2.303-7.137c0-3.275-1.275-6.355-3.594-8.672
+						C18.625,1.278,15.543,0,12.266,0C8.99,0,5.909,1.275,3.593,3.594C1.277,5.909,0.001,8.99,0.001,12.266
+						c0,3.276,1.275,6.356,3.592,8.674c2.316,2.316,5.396,3.594,8.673,3.594c2.599,0,5.067-0.813,7.136-2.303l6.114,6.115
+						c0.392,0.391,0.902,0.586,1.414,0.586c0.513,0,1.024-0.195,1.414-0.586C29.125,27.564,29.125,26.299,28.344,25.518z M6.422,18.111
+						c-1.562-1.562-2.421-3.639-2.421-5.846S4.86,7.983,6.422,6.421c1.561-1.562,3.636-2.422,5.844-2.422s4.284,0.86,5.845,2.422
+						c1.562,1.562,2.422,3.638,2.422,5.845s-0.859,4.283-2.422,5.846c-1.562,1.562-3.636,2.42-5.845,2.42S7.981,19.672,6.422,18.111z"/>
+				</svg>
+				<input type="search" name="search_input" placeholder="Search">		
+			</div>
+		</header>		
+
+		<main>
+			<ul class="selecte">
+				<li>
+					<input type="checkbox" name="select">
+					<img src="icons/ppic.jpg">
+					<a href="innerMessage.html">
+						<label>Farai Mazarura</label>
+						<label>0930</label>
+						<label>Message summary</label>
+						<label>3</label>
+					</a>
+					<button rbtn fgc="dark">
+						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 						viewBox="0 0 443.52 443.52" style="enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
+							<path d="M336.226,209.591l-204.8-204.8c-6.78-6.548-17.584-6.36-24.132,0.42c-6.388,6.614-6.388,17.099,0,23.712l192.734,192.734
+										L107.294,414.391c-6.663,6.664-6.663,17.468,0,24.132c6.665,6.663,17.468,6.663,24.132,0l204.8-204.8
+									C342.889,227.058,342.889,216.255,336.226,209.591z"/>
+						</svg>
+					</button>
+				</li>
+			</ul> 	
+		</main>	
+		
+		<footer>
+				
+			<a href="profile.html">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					viewBox="0 0 512 512" xml:space="preserve">
+					<path d="M299.287,255.5h-86.574c-85.147,0-154.418,69.272-154.418,154.418V512h395.41V409.918
+							C453.705,324.772,384.434,255.5,299.287,255.5z"/>
+					<path d="M256,0c-65.843,0-119.409,53.567-119.409,119.41c0,65.842,53.566,119.409,119.409,119.409s119.409-53.567,119.409-119.41
+							C375.409,53.567,321.843,0,256,0z"/>
+				</svg>
+				<label>Profile</label>		
+			</a>
+
+			<a href="contacts.html">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					viewBox="0 0 512 512" xml:space="preserve">
+					<path d="M448,64h-48V16c0-8.832-7.168-16-16-16H96C69.536,0,48,21.536,48,48v400c0,35.296,28.704,64,64,64h336
+							c8.832,0,16-7.168,16-16V80C464,71.168,456.832,64,448,64z M320,416H160c-8.832,0-16-7.168-16-16c0-44.128,35.904-80,80-80h32
+							c44.096,0,80,35.872,80,80C336,408.832,328.832,416,320,416z M176,224c0-35.296,28.704-64,64-64s64,28.704,64,64s-28.704,64-64,64
+							C204.704,288,176,259.296,176,224z M368,64H96c-8.832,0-16-7.168-16-16c0-8.832,7.168-16,16-16h272V64z"/>
+				</svg>
+				<label>Contacts</label>
+			</a>
+				
+			<a href="menu.html" id="chats">
+				<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 				viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+					<polygon points="4.738,4.364 4.738,19.939 21.27,20.123 30,23.879 30,20.221 30,2.283"/>
+					<polygon points="21.65,21.626 3.645,21.301 3.645,11.356 3.645,9.011 0,9.21 0,24.581 0,27.717 6.895,24.858 24.173,25.551 24.173,22.729 "/>
+				</svg>
+				<label>Chats</label>
+			</a>
+
+			<a href="applets.html">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					 viewBox="0 0 512 512" xml:space="preserve">
+					<path d="M149.333,0H64C28.715,0,0,28.715,0,64v85.333c0,35.285,28.715,64,64,64h85.333c35.285,0,64-28.715,64-64V64
+							C213.333,28.715,184.619,0,149.333,0z"/>
+					<path d="M448,0h-85.333c-35.285,0-64,28.715-64,64v85.333c0,35.285,28.715,64,64,64H448c35.285,0,64-28.715,64-64V64
+							C512,28.715,483.285,0,448,0z"/>
+					<path d="M149.333,298.667H64c-35.285,0-64,28.715-64,64V448c0,35.285,28.715,64,64,64h85.333c35.285,0,64-28.715,64-64v-85.333
+							C213.333,327.381,184.619,298.667,149.333,298.667z"/>
+					<path d="M490.667,384h-64v-64c0-11.776-9.536-21.333-21.333-21.333C393.536,298.667,384,308.224,384,320v64h-64
+							c-11.797,0-21.333,9.557-21.333,21.333s9.536,21.333,21.333,21.333h64v64c0,11.776,9.536,21.333,21.333,21.333
+							c11.797,0,21.333-9.557,21.333-21.333v-64h64c11.797,0,21.333-9.557,21.333-21.333S502.464,384,490.667,384z"/>
+				</svg>
+				<label>Applets</label>
+			</a>
+		</footer>
+	</body>
+</html>
