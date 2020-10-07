@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Inner Chat</title>
+		<style>
+			/* Defaults */
+			*{
+				padding: 0;
+				margin: 0;}
+			a{
+				text-decoration-style: none;
+				text-decoration: none;
+				color: #80aaff;}
+			::-webkit-scrollbar{
+				display: none;}
+			/* End of defaults*/
+			[rbtn]{
+				height: 35px;
+				width: 35px;
+				border-radius: 50%;
+				border-style: none;}
+			[rbtn] svg{width: 14px;}
+			[rbtn][fgc="light"]{background-color: black;}
+			[rbtn][fgc="dark"]{background-color: white;}
+			[rbtn][fgc="light"] svg{
+				fill: white;
+				stroke: white;}
+			[rbtn][fgc="dark"] svg{
+				fill: black;
+				stroke: black;}
+			html{
+				height: 100%;
+				width: 100%;
+				font-family: verdana;}
+				body{
+					display: grid;
+					width: 100%;
+					max-width: 480px;
+					height: 100%;
+					grid-template-areas: "a";
+					border-right: 1px solid black;}
+					body > div{
+						height: 100%;
+						width:100%;
+						grid-area: a;
+						overflow-y: hidden;}
+						#a{
+							z-index: 2;
+							background-color: pink;}
+						#a.off{
+							display: none;}
+						#b{
+							display: grid;
+							grid-template-rows: min-content 1fr 65px;}
+					header{
+						display: grid;
+						grid-template-columns: repeat(2,auto) 1fr auto;
+						grid-auto-columns: min-content;
+						grid-gap: 10px;
+						padding: 10px;
+						align-items: center;
+						box-sizing: content-box;}
+						header > button:not([rbtn]){
+							width: 35px;
+							height:35px;
+							outline: none;
+							border:none;
+							background-color: inherit;}
+							header > button:not([rbtn]) svg{
+								width: 24px;
+							}
+						header img{
+							width: 50px;
+							height: 50px;
+							border-radius: 50%;}
+						header label{
+							font-weight: bold;
+							color: black;
+							font-size: 16px;
+							justify-content: center;}
+					main{
+						height: 100%;
+						border-top: 1px solid #eee;
+						padding:10px;
+						overflow-y: scroll;}
+						main li{
+							display: grid;
+							grid-template-columns: repeat(2,min-content);
+							align-items: center;
+							grid-gap: 10px;}
+							main li input{
+								width: 35px;}
+						main input.off{
+							display: none;
+							}
+						main ul li > div{
+							/*width: auto;*/
+							display: grid;
+							grid-gap: 5px;
+							min-height: 40px;
+							min-width: 160px;
+							max-width: 75%;
+							border-radius: 10px;
+							padding: 10px;
+							background-color: #eee;}
+						main ul li > div div:nth-child(3){
+							display: grid;
+							grid-template-columns: min-content;
+							justify-items: end;
+							grid-gap: 5px;
+							grid-auto-flow: column;
+							background-color: white;
+							padding: 5px;
+							font-size: 9px;
+							color: #5e5e5e;}
+			footer{
+						display: grid;
+						grid-template-areas: a b c;
+						grid-template-columns: auto 1fr repeat(2,auto);
+
+						grid-gap: 10px;
+						padding: 10px;
+						align-items: center;
+						background-color: black;}
+						footer div{
+							/*grid-area: b;*/
+							height: 35px;
+							border-radius: 20px;
+							padding: 0px 20px;
+							background-color: white;
+							display: grid;
+							align-items: center;
+							}
+							footer div input{
+								background-color: inherit;
+								outline: none;
+								border-style: none;
+								font-size: 14px;}
+		</style>
+	</head>
+
+	<body>
+		<div class="off" id="a"></div>
+		<div id="b">
+			<header>
+				<button>
+					<a href="#">
+						<svg  enable-background="new 0 0 64 64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+							<path d="m54 30h-39.899l15.278-14.552c.8-.762.831-2.028.069-2.828-.761-.799-2.027-.831-2.828-.069l-17.448 16.62c-.755.756-1.172 1.76-1.172 2.829 0 1.068.417 2.073 1.207 2.862l17.414 16.586c.387.369.883.552 1.379.552.528 0 1.056-.208 1.449-.621.762-.8.731-2.065-.069-2.827l-15.342-14.552h39.962c1.104 0 2-.896 2-2s-.896-2-2-2z"/>
+						</svg>
+					</a>
+				</button>
+				<img src="icons/ppic.jpg">
+				<label>Farai Mazarura</label>
+				<button rbtn fgc="light">
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 408 408" style="enable-background:new 0 0 408 408;" xml:space="preserve">
+							<path d="M204,102c28.05,0,51-22.95,51-51S232.05,0,204,0s-51,22.95-51,51S175.95,102,204,102z M204,153c-28.05,0-51,22.95-51,51
+									s22.95,51,51,51s51-22.95,51-51S232.05,153,204,153z M204,306c-28.05,0-51,22.95-51,51s22.95,51,51,51s51-22.95,51-51
+									S232.05,306,204,306z"/>
+					</svg>
+				</button>
+			</header>
+			<main>
+				<ul>
+					<li>
+						<input type="checkbox" name="">
+						<div>
+							<div>first</div>
+							<div>second</div>
+							<div>
+								<label>12kb</label>
+								<label><b>09:00</b></label>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</main>
+			<footer>
+				<button rbtn fgc="dark">
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 277.856 277.856" style="enable-background:new 0 0 277.856 277.856;" xml:space="preserve">
+						<path d="M78.68,277.856c-0.864,0-1.75-0.017-2.631-0.049c-16.113-0.638-31.754-7.416-42.911-18.567
+								c-23.425-23.43-23.427-61.528-0.006-84.96L149.653,57.777c14.862-14.862,39.05-14.864,53.921-0.003
+								c14.868,14.892,14.868,39.096,0,53.958l-80.256,80.247l-19.68-19.681l80.258-80.251c4.028-4.019,4.026-10.553-0.004-14.593
+								c-4.007-4.002-10.551-4.003-14.564,0.006L52.815,193.962c-12.573,12.573-12.57,33.02,0.006,45.594
+								c6.265,6.279,15.146,10.071,24.341,10.434c9.167,0.369,17.394-2.642,23.227-8.454l116.753-116.756
+								c10.577-10.595,16.893-25.441,17.298-40.744c0.41-15.477-5.036-29.679-15.329-39.981c-21.646-21.62-61.059-21.62-82.686,0
+								l-80.41,80.417L36.33,104.787l80.421-80.416c32.496-32.494,89.522-32.495,122.034-0.002c15.757,15.761,24.098,37.214,23.47,60.427
+								c-0.601,22.337-9.872,44.084-25.43,59.659L120.073,261.212C109.275,271.988,94.662,277.856,78.68,277.856z"/>
+					</svg>
+				</button>
+				<div>
+					<input type="text" name="message" placeholder="Type your message">
+				</div>
+				<button rbtn fgc="dark">
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 31.371 31.371" style="enable-background:new 0 0 31.371 31.371;" xml:space="preserve">
+						<path d="M24.26,20.34c0,3.42-2.423,6.342-6.845,7.111v3.92h-3.768v-3.648c-2.578-0.117-5.076-0.811-6.537-1.654l1.154-4.5
+								c1.615,0.886,3.883,1.693,6.383,1.693c2.191,0,3.691-0.848,3.691-2.385c0-1.461-1.23-2.389-4.077-3.348
+								c-4.112-1.385-6.921-3.306-6.921-7.033c0-3.386,2.385-6.035,6.499-6.845V0h3.767v3.383c2.576,0.115,4.309,0.652,5.576,1.268
+								l-1.115,4.348C21.07,8.575,19.3,7.688,16.531,7.688c-2.5,0-3.307,1.076-3.307,2.154c0,1.268,1.346,2.074,4.613,3.307
+								C22.416,14.762,24.26,16.877,24.26,20.34z"/>
+					</svg>
+				</button>
+				<button rbtn fgc="dark">
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 36.174 36.174" style="enable-background:new 0 0 36.174 36.174;" xml:space="preserve">
+						<path d="M23.921,20.528c0,3.217-2.617,5.834-5.834,5.834s-5.833-2.617-5.833-5.834s2.616-5.834,5.833-5.834
+							S23.921,17.312,23.921,20.528z M36.174,12.244v16.57c0,2.209-1.791,4-4,4H4c-2.209,0-4-1.791-4-4v-16.57c0-2.209,1.791-4,4-4h4.92
+							V6.86c0-1.933,1.566-3.5,3.5-3.5h11.334c1.934,0,3.5,1.567,3.5,3.5v1.383h4.92C34.383,8.244,36.174,10.035,36.174,12.244z
+							 M26.921,20.528c0-4.871-3.963-8.834-8.834-8.834c-4.87,0-8.833,3.963-8.833,8.834s3.963,8.834,8.833,8.834
+							C22.958,29.362,26.921,25.399,26.921,20.528z"/>
+					</svg>
+				</button>
+
+			</footer>
+		</div>
+	</body>
+</html>
