@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Inner Chat</title>
+		<title>Chatbox</title>
 		<style>
 			/* Defaults */
 			*{
@@ -15,6 +15,8 @@
 				color: #80aaff;}
 			::-webkit-scrollbar{
 				display: none;}
+			audio::-webkit-media-controls-panel {
+                background-color: dodgerblue;}
 			/* End of defaults*/
 			[rbtn]{
 				height: 35px;
@@ -85,59 +87,107 @@
 						border-top: 1px solid #eee;
 						padding:10px;
 						overflow-y: scroll;}
+
 						main li{
 							display: grid;
-							grid-template-columns: repeat(2,min-content);
+							grid-template-areas: 'a b';
+							grid-template-columns: min-content 1fr;
 							align-items: center;
-							grid-gap: 10px;}
+							grid-gap: 10px;
+							padding: 10px 0;}
 							main li input{
 								width: 35px;}
-						main input.off{
+						main input{
+							grid-area: a;
 							display: none;
+						}
+						main ul.selected input{
+							display: block;
 							}
 						main ul li > div{
 							/*width: auto;*/
-							display: grid;
-							grid-gap: 5px;
+							grid-area: b;
+							display: flex;
+							flex-direction: column-reverse;
 							min-height: 40px;
-							min-width: 160px;
+							justify-self:start;
+							min-width: 100px;
 							max-width: 75%;
 							border-radius: 10px;
 							padding: 10px;
 							background-color: #eee;}
-						main ul li > div div:nth-child(3){
-							display: grid;
-							grid-template-columns: min-content;
-							justify-items: end;
-							grid-gap: 5px;
-							grid-auto-flow: column;
-							background-color: white;
-							padding: 5px;
-							font-size: 9px;
-							color: #5e5e5e;}
-			footer{
-						display: grid;
-						grid-template-areas: a b c;
-						grid-template-columns: auto 1fr repeat(2,auto);
-
-						grid-gap: 10px;
-						padding: 10px;
-						align-items: center;
-						background-color: black;}
-						footer div{
-							/*grid-area: b;*/
-							height: 35px;
-							border-radius: 20px;
-							padding: 0px 20px;
-							background-color: white;
-							display: grid;
-							align-items: center;
+						main ul li > div[out]{
+							justify-self:end;
+						}
+							main ul li > div div:not(:first-child){
+								margin-bottom: 10px; 
 							}
-							footer div input{
-								background-color: inherit;
-								outline: none;
-								border-style: none;
-								font-size: 14px;}
+							main ul li > div div:nth-child(1){
+								display: grid;
+								grid-template-columns: min-content;
+								grid-gap: 8px;
+								justify-content: end;
+								padding: 5px;
+								grid-auto-flow: column;
+								/*background-color: white;*/
+								font-size: 10px;
+								color: #5e5e5e;}
+							main div.transaction{
+								display: grid;
+								grid-template-areas: "a b" "a c";
+								grid-template-columns: min-content 1fr;
+								/*height: 75%;
+								width: 75%;*/
+								align-items: center;
+								padding: 10px 20px;
+								grid-gap: 5px 10px;
+								border-radius: 25px;
+								background-color: dodgerblue;
+								font-size: 10px;
+								box-sizing: content-box;
+								}
+								main div.transaction > img{
+									grid-area: a;
+									height: 35px;
+									width: 35px;
+									/*border-radius: 50%;*/
+									object-fit: cover;
+									color: white}
+								main div.transaction label:nth-child(3){
+									font-size: 20px;
+									font-weight: bold;}
+								
+								
+							main img{
+								object-fit: contain;
+								width: 100%;}
+							main audio{
+								width: 200px;}
+							main ul li > div div:nth-child(2){
+								display: grid;
+								}
+			footer{
+				display: grid;
+				grid-template-areas: a b c;
+				grid-template-columns: auto 1fr repeat(2,auto);
+				z-index: 2;
+				grid-gap: 10px;
+				padding: 10px;
+				align-items: center;
+				background-color: black;}
+				footer div{
+					/*grid-area: b;*/
+					height: 35px;
+					border-radius: 20px;
+					padding: 0px 20px;
+					background-color: white;
+					display: grid;
+					align-items: center;}
+					footer div input{
+						background-color: inherit;
+						outline: none;
+						border-style: none;
+						font-size: 14px;}
 		</style>
 	</head>
 
@@ -146,7 +196,7 @@
 		<div id="b">
 			<header>
 				<button>
-					<a href="#">
+					<a href="menu.html">
 						<svg  enable-background="new 0 0 64 64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
 							<path d="m54 30h-39.899l15.278-14.552c.8-.762.831-2.028.069-2.828-.761-.799-2.027-.831-2.828-.069l-17.448 16.62c-.755.756-1.172 1.76-1.172 2.829 0 1.068.417 2.073 1.207 2.862l17.414 16.586c.387.369.883.552 1.379.552.528 0 1.056-.208 1.449-.621.762-.8.731-2.065-.069-2.827l-15.342-14.552h39.962c1.104 0 2-.896 2-2s-.896-2-2-2z"/>
 						</svg>
@@ -164,18 +214,98 @@
 				</button>
 			</header>
 			<main>
-				<ul>
+				<ul class="">
 					<li>
 						<input type="checkbox" name="">
 						<div>
-							<div>first</div>
-							<div>second</div>
 							<div>
 								<label>12kb</label>
 								<label><b>09:00</b></label>
 							</div>
+							<label>
+								Lorem Ipsum is simply 
+							</label>
+							<!-- <div>first</div> -->
 						</div>
 					</li>
+					<li>
+						<input type="checkbox" name="">
+						<div out>
+							<div>
+								<label>12kb</label>
+								<label><b>09:00</b></label>
+							</div>
+							<label>
+								Lorem Ipsum is simply 
+							</label>
+							<div>first</div>
+						</div>
+					</li>
+					<li>
+						<input type="checkbox" name="">
+						<div>
+							<div>
+								<label>12kb</label>
+								<label><b>09:00</b></label>
+							</div>
+							<img src="icons/ppic.jpg">
+							<div>first</div>
+						</div>
+					</li>	
+					<li>
+						<input type="checkbox" name="">
+						<div out>
+							<div>
+								<label>12kb</label>
+								<label><b>09:00</b></label>
+							</div>
+							<video controls>
+								<source src="icons/video.mp4" type="video/mp4">
+								<source src="icons/video.mp4" type="video/ogg">
+							</video>
+							<div>first</div>
+						</div>
+					</li>	
+					<li>
+						<input type="checkbox" name="">
+						<div>
+							<div>
+								<label>12kb</label>
+								<label><b>09:00</b></label>
+							</div>
+							<audio controls>
+								<source src="icons/horse.ogv" type="audio/ogg">
+								<source src="icons/horse.ogv" type="audio/mpeg">
+							</audio>
+							<div>first</div>
+						</div>
+					</li>	
+					<li>
+						<input type="checkbox" name="">
+						<div out>
+							<div>
+								<label>12kb</label>
+								<label><b>09:00</b></label>
+							</div>
+							<embed src="icons/book.pdf" type="application/pdf" width="100%" scrolling="no" />
+							<!-- <iframe src="icons/book.pdf#toolbar=0" style="width:100%; height:500px;"></iframe> -->
+							<div>first</div>
+						</div>
+					</li>
+					<li>
+						<input type="checkbox" name="">
+						<div>
+							<div>
+								<label>transaction#</label>
+								<label><b>09:00</b></label>
+							</div>
+							<div class="transaction">
+								<img src="icons/cash.svg">
+								<label>$50</label>
+							</div>
+							<div>first</div>
+						</div>
+					</li>	
 				</ul>
 			</main>
 			<footer>

@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Chats</title>
+		<title>Applet</title>
 		<style>
 			/* Defaults */
 			*{
@@ -137,17 +137,16 @@
 								display: grid;
 								grid-template-columns: repeat(4, auto);
 								align-items: center;
-								background-color: black;
-								z-index: 2;}
+								background-color: black;}
 								footer a{
 									display: grid;
 									grid-gap: 5px;
 									font-size: 10px;
 									color: white;
 									justify-items: center;}
-								#chats{
+								#applet{
 									color: dodgerblue;}
-									#chats svg{
+									#applet svg{
 										fill: dodgerblue;
 										stroke: dodgerblue;}
 									footer svg{
@@ -184,26 +183,7 @@
 			</header>		
 
 			<main>
-				<ul class="selecte">
-					<li>
-						<input type="checkbox" name="select">
-						<img src="icons/ppic.jpg">
-						<a href="chatbox.html">
-							<label>Farai Mazarura</label>
-							<label>0930</label>
-							<label>Message summary</label>
-							<label>3</label>
-						</a>
-						<button rbtn fgc="dark">
-							<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-			 					viewBox="0 0 443.52 443.52" style="enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
-								<path d="M336.226,209.591l-204.8-204.8c-6.78-6.548-17.584-6.36-24.132,0.42c-6.388,6.614-6.388,17.099,0,23.712l192.734,192.734
-										L107.294,414.391c-6.663,6.664-6.663,17.468,0,24.132c6.665,6.663,17.468,6.663,24.132,0l204.8-204.8
-										C342.889,227.058,342.889,216.255,336.226,209.591z"/>
-							</svg>
-						</button>
-					</li>
-				</ul> 	
+					
 			</main>	
 			
 			<footer>	
@@ -238,7 +218,7 @@
 					<label>Chats</label>
 				</a>
 
-				<a href="applet.html">
+				<a href="applet.html" id="applet">
 					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 						 viewBox="0 0 512 512" xml:space="preserve">
 						<path d="M149.333,0H64C28.715,0,0,28.715,0,64v85.333c0,35.285,28.715,64,64,64h85.333c35.285,0,64-28.715,64-64V64
