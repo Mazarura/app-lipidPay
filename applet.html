@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Applet</title>
+		<title>Applets</title>
 		<style>
 			/* Defaults */
 			*{
@@ -80,59 +80,66 @@
 										border-style: none;
 										font-size: 14px;}
 							main{
-								display: grid;
 								height: 100%;
 								width: 100%;
-								overflow-y: scroll;}
-								main ul{
+								overflow-x: hidden;}
+							main ul{
+								/*overflow-x: scroll;*/}
+								main ul ul.myapps{
+									display: grid;
+									grid-template-columns: repeat(4,auto);
+									grid-template-rows: repeat(3, min-content);
+									grid-auto-flow: column;
+									grid-auto-rows: min-content;
+									padding: 10px;
+									grid-column-gap: 40px;
+									grid-row-gap: 20px;
+									/*grid-template-areas: "a a a a" "b c d e" "f g h i";*/
+									grid-auto-rows: min-content;
+									height: 100%;
 									width: 100%;
-									border-top: 1px solid #eeeeee;}
-									main li{
+									overflow-x: scroll;
+									/*background-color: pink;*/}
+									main ul div{
+										/*grid-column: 1 / -1;*/
+										/*grid-area: a;*/
 										display: grid;
-										grid-template-areas: "a b c d";
-										grid-template-columns: auto auto 1fr auto;
-										grid-auto-columns: min-content;
-										grid-gap: 10px;
 										padding: 10px;
+										grid-gap: 10px;
+										grid-template-columns: 1fr min-content; 
 										align-items: center;
-										border-bottom: 1px solid #eeeeee;}
-										main input{
-											grid-area: a;
-											display: none;}
-										main ul.selected input{
-											display: block;}
-										main img{
-											width: 50px;
-											height: 50px;
-											grid-area: b;
-											border-radius: 50%;}
-										main a{
-											grid-area: c;
-											height: 100%;
+										border-bottom: 1px solid #eee;}
+										main ul div > label{ 
+											font-size: 10px;
+											font-weight: bold; }
+										main ul div > button{ 
+											align-self: end; }
+										main ul.myapps li{ 
 											display: grid;
-											grid-template-columns: 1fr min-content;
-											color: #5e5e5e; 
-											font-size: 12px;}
-											main li label:nth-child(1){
-												font-weight: bold;
-												color: black;
-												font-size: 16px;}
-											main li label:nth-child(2){
-												justify-self:end;}
-											main li label:nth-child(3){
-												font-style: italic;}	
-											main li label:nth-child(4){
-												width: 18px;
-												height: 18px;
-												justify-self:end;
-												background-color:black;
-												color: white;
-												display: flex;
-												justify-content:center;
-												align-items: center;
-												border-radius: 50%;}
-										main button{
-											grid-area: d;}	
+											grid-template-columns: auto;
+											grid-template-rows: repeat(2, min-content);
+											justify-items: center;										
+											/*padding: 10px;*/
+											grid-gap: 5px;
+											/*background-color: pink;*/}
+										main li > img{
+											height: 50px;
+											width: 50px;
+											border-radius: 15px;
+											object-fit: cover;}
+										main li > label{ 
+											font-size: 10px; }
+									main ul.categories > li{
+										display: grid;
+										grid-template-columns: min-content 1fr min-content;
+										padding: 10px;
+										grid-gap: 10px;
+										height: 100%;
+										width: 100%;
+										align-items: center;
+										border: 1px solid #eee;}
+
+
 							footer{
 								display: grid;
 								grid-template-columns: repeat(4, auto);
@@ -183,7 +190,196 @@
 			</header>		
 
 			<main>
-					
+				<ul>
+					<div>
+						<label>My apps</label>
+						<button rbtn fgc="dark">
+							<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								 viewBox="0 0 443.52 443.52" style="enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
+								<path d="M336.226,209.591l-204.8-204.8c-6.78-6.548-17.584-6.36-24.132,0.42c-6.388,6.614-6.388,17.099,0,23.712l192.734,192.734
+									L107.294,414.391c-6.663,6.664-6.663,17.468,0,24.132c6.665,6.663,17.468,6.663,24.132,0l204.8-204.8
+									C342.889,227.058,342.889,216.255,336.226,209.591z"/>
+							</svg>
+						</button>
+					</div>
+					<ul class="myapps">
+						
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+						</li>
+
+					</ul>
+
+					<div>
+						<label>Other Categories</label>
+						<button rbtn fgc="dark">
+							<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								 viewBox="0 0 443.52 443.52" style="enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
+								<path d="M336.226,209.591l-204.8-204.8c-6.78-6.548-17.584-6.36-24.132,0.42c-6.388,6.614-6.388,17.099,0,23.712l192.734,192.734
+									L107.294,414.391c-6.663,6.664-6.663,17.468,0,24.132c6.665,6.663,17.468,6.663,24.132,0l204.8-204.8
+									C342.889,227.058,342.889,216.255,336.226,209.591z"/>
+							</svg>
+						</button>
+
+					</div>
+					<ul class="categories">
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+							<button rbtn fgc="dark">
+								<svg viewBox="0 0 448 448" xmlns="http://www.w3.org/2000/svg">
+									<path d="m408 184h-136c-4.417969 0-8-3.582031-8-8v-136c0-22.089844-17.910156-40-40-40s-40 17.910156-40 40v136c0 4.417969-3.582031 8-8 8h-136c-22.089844 0-40 17.910156-40 40s17.910156 40 40 40h136c4.417969 0 8 3.582031 8 8v136c0 22.089844 17.910156 40 40 40s40-17.910156 40-40v-136c0-4.417969 3.582031-8 8-8h136c22.089844 0 40-17.910156 40-40s-17.910156-40-40-40zm0 0"/>
+								</svg>
+							</button>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+							<button rbtn fgc="dark">
+								<svg viewBox="0 0 448 448" xmlns="http://www.w3.org/2000/svg">
+									<path d="m408 184h-136c-4.417969 0-8-3.582031-8-8v-136c0-22.089844-17.910156-40-40-40s-40 17.910156-40 40v136c0 4.417969-3.582031 8-8 8h-136c-22.089844 0-40 17.910156-40 40s17.910156 40 40 40h136c4.417969 0 8 3.582031 8 8v136c0 22.089844 17.910156 40 40 40s40-17.910156 40-40v-136c0-4.417969 3.582031-8 8-8h136c22.089844 0 40-17.910156 40-40s-17.910156-40-40-40zm0 0"/>
+								</svg>
+							</button>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+							<button rbtn fgc="dark">
+								<svg viewBox="0 0 448 448" xmlns="http://www.w3.org/2000/svg">
+									<path d="m408 184h-136c-4.417969 0-8-3.582031-8-8v-136c0-22.089844-17.910156-40-40-40s-40 17.910156-40 40v136c0 4.417969-3.582031 8-8 8h-136c-22.089844 0-40 17.910156-40 40s17.910156 40 40 40h136c4.417969 0 8 3.582031 8 8v136c0 22.089844 17.910156 40 40 40s40-17.910156 40-40v-136c0-4.417969 3.582031-8 8-8h136c22.089844 0 40-17.910156 40-40s-17.910156-40-40-40zm0 0"/>
+								</svg>
+							</button>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+							<button rbtn fgc="dark">
+								<svg viewBox="0 0 448 448" xmlns="http://www.w3.org/2000/svg">
+									<path d="m408 184h-136c-4.417969 0-8-3.582031-8-8v-136c0-22.089844-17.910156-40-40-40s-40 17.910156-40 40v136c0 4.417969-3.582031 8-8 8h-136c-22.089844 0-40 17.910156-40 40s17.910156 40 40 40h136c4.417969 0 8 3.582031 8 8v136c0 22.089844 17.910156 40 40 40s40-17.910156 40-40v-136c0-4.417969 3.582031-8 8-8h136c22.089844 0 40-17.910156 40-40s-17.910156-40-40-40zm0 0"/>
+								</svg>
+							</button>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+							<button rbtn fgc="dark">
+								<svg viewBox="0 0 448 448" xmlns="http://www.w3.org/2000/svg">
+									<path d="m408 184h-136c-4.417969 0-8-3.582031-8-8v-136c0-22.089844-17.910156-40-40-40s-40 17.910156-40 40v136c0 4.417969-3.582031 8-8 8h-136c-22.089844 0-40 17.910156-40 40s17.910156 40 40 40h136c4.417969 0 8 3.582031 8 8v136c0 22.089844 17.910156 40 40 40s40-17.910156 40-40v-136c0-4.417969 3.582031-8 8-8h136c22.089844 0 40-17.910156 40-40s-17.910156-40-40-40zm0 0"/>
+								</svg>
+							</button>
+						</li>
+						<li>
+							<img src="icons/ppic.jpg">
+							<label>App</label>
+							<button rbtn fgc="dark">
+								<svg viewBox="0 0 448 448" xmlns="http://www.w3.org/2000/svg">
+									<path d="m408 184h-136c-4.417969 0-8-3.582031-8-8v-136c0-22.089844-17.910156-40-40-40s-40 17.910156-40 40v136c0 4.417969-3.582031 8-8 8h-136c-22.089844 0-40 17.910156-40 40s17.910156 40 40 40h136c4.417969 0 8 3.582031 8 8v136c0 22.089844 17.910156 40 40 40s40-17.910156 40-40v-136c0-4.417969 3.582031-8 8-8h136c22.089844 0 40-17.910156 40-40s-17.910156-40-40-40zm0 0"/>
+								</svg>
+							</button>
+						</li>
+					</ul>
+				</ul>
 			</main>	
 			
 			<footer>	
